@@ -5,8 +5,9 @@ import time
 from tqdm import tqdm
 import numpy as np
 from sam3.model_builder import build_sam3_video_model
+import cv2
 import sys
-sys.path.append('/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/ASAN_01_mini_sam3')
+sys.path.append('/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/ASAN_01_mini_SAM3')
 from func.mask_to_bbox import mask_to_bbox
 
 # -----------------------------------------------------------------------------
@@ -15,7 +16,7 @@ from func.mask_to_bbox import mask_to_bbox
 
 # Path 정리
 DATA_DIR = Path("/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/data")
-BASE_DIR = Path("/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/ASAN_01_mini_sam3/")
+BASE_DIR = Path("/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/ASAN_01_mini_SAM3/")
 CSV_PATH = DATA_DIR / "metadata.csv"
 OUTPUT_PATH = DATA_DIR / "test"
 CHECKPOINT_DIR = DATA_DIR / "checkpoints/SAM3"
@@ -23,9 +24,8 @@ CHECKPOINT_PT = CHECKPOINT_DIR / "sam3.pt"
 
 # CSV 불러오기 및 타겟 설정
 df = pd.read_csv(CSV_PATH)
-target = 3                             # 원하는 행 인덱스 설정
 
-for target in range(1,2):
+for target in range(1,5):
     start_time = time.time()
 
     # 데이터 추출
@@ -89,8 +89,17 @@ for target in range(1,2):
     )
 
     # 해상도 복원용 변수 (사용자 코드 유지)
-    width = 1920
-    height = 1080
+    cap = cv2.VideoCapture(str(VIDEO_PTH))
+    if cap.isOpened():
+        width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        cap.release() # 리소스 해제
+        print(f"🎥 Detected Video Resolution: {width}x{height}")
+    else:
+        # 비디오를 열 수 없는 경우 기본값 설정 (혹은 예외 처리)
+        print(f"⚠️ Warning: Could not open video at {VIDEO_PTH}. Using default 1920x1080.")
+        width = 1920
+        height = 1080
 
     box = np.array([[ 
         rel_box[0][0] * width,
