@@ -25,7 +25,7 @@ CHECKPOINT_PT = CHECKPOINT_DIR / "sam3.pt"
 # CSV 불러오기 및 타겟 설정
 df = pd.read_csv(CSV_PATH)
 
-for target in range(1,5):
+for target in range(0,1):
     start_time = time.time()
 
     # 데이터 추출

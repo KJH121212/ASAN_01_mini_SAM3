@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J tojihoo_postprocessing
+#SBATCH -J tojihoo_video_cutting
 #SBATCH -t 7-00:00:00
 #SBATCH -o /home/tojihoo/logs/%A.out
 #SBATCH --mail-type END,TIME_LIMIT_90,REQUEUE,INVALID_DEPEND
@@ -47,7 +47,7 @@ docker run -it --rm --device=nvidia.com/gpu=all --shm-size 1TB \
     ${DOCKER_IMAGE_NAME} \
     bash -c "
         cd /workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/ASAN_01_mini_SAM3/runner && \
-        python3 cutting_video.py
+        python3 bbox_by_sam3.py
     "
 
-echo "[✅ DONE] cutting_video.py finished."
+echo "[✅ DONE] bbox_by_sam3.py finished."

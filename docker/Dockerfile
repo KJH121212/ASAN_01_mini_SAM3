@@ -41,7 +41,7 @@ RUN python3 -m pip install --upgrade pip setuptools wheel --no-cache-dir
 # ------------------------------------------------------------
 # 5️⃣  Install main Python dependencies
 # ------------------------------------------------------------
-COPY docker/requirements.txt /tmp/requirements.txt
+COPY requirements.txt /tmp/requirements.txt
 
 RUN python -m pip install --no-cache-dir -r /tmp/requirements.txt
 
