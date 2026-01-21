@@ -9,6 +9,9 @@ import cv2
 from pathlib import Path
 from tqdm import tqdm
 from sam3.model_builder import build_sam3_video_predictor
+from huggingface_hub import login, HfApi
+from dotenv import load_dotenv
+import os
 
 # ==============================================================================
 # ⚙️ 설정
@@ -22,6 +25,15 @@ TEMP_DIR = OUTPUT_DIR / "temp_chunk_frames"
 
 STEP_SIZE = 200   # 실제 처리 진도
 LOOK_AHEAD = 10   # 겹침 구간 (Handshake Zone)
+
+# 1. 환경 변수 로드
+load_dotenv("../.env")
+hf_token = os.getenv("HUGGINGFACE_TOKEN")
+
+if hf_token is None:
+    raise ValueError("HUGGINGFACE_TOKEN을 env 파일에서 찾을 수 없음")
+
+login(token=hf_token)
 
 # ==============================================================================
 # 🛠️ 유틸리티

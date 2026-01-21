@@ -1,2 +1,5 @@
 *.env
 data/
+*.json
+*.mp4
+*.jpg
