@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH -J tojihoo_video_cutting
+#SBATCH -J tojihoo_segment
 #SBATCH -t 7-00:00:00
 #SBATCH -o /home/tojihoo/logs/%A.out
 #SBATCH --mail-type END,TIME_LIMIT_90,REQUEUE,INVALID_DEPEND
 #SBATCH --mail-user jihu6033@gmail.com
-#SBATCH -p TitanRTX
+#SBATCH -p RTX3090
 #SBATCH --gpus 1
 
 # ------------------------------------------------------------
@@ -15,8 +15,8 @@ export HTTPS_PROXY=http://192.168.45.108:3128
 export http_proxy=http://192.168.45.108:3128
 export https_proxy=http://192.168.45.108:3128
 
-DOCKER_IMAGE_NAME="tojihoo/sam3"
-DOCKER_CONTAINER_NAME="tojihoo_video_cutting"
+DOCKER_IMAGE_NAME="tojihoo/sam:v1.1"
+DOCKER_CONTAINER_NAME="tojihoo_samv3"
 DOCKERFILE_PATH="/mnt/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/jupyter/sam3/Dockerfile"
 WORKSPACE_PATH="/mnt/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/jupyter/sam3/"
 RANDOM_PORT=$(( (RANDOM % 101) + 8000 ))  # 8000~8100 사이 포트
@@ -47,7 +47,7 @@ docker run -it --rm --device=nvidia.com/gpu=all --shm-size 1TB \
     ${DOCKER_IMAGE_NAME} \
     bash -c "
         cd /workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/ASAN_01_mini_SAM3/runner && \
-        python3 bbox_by_sam3.py
+        python3 seg_by_samv3.py
     "
 
-echo "[✅ DONE] bbox_by_sam3.py finished."
+echo "[✅ DONE] seg_by_samv3.py finished."

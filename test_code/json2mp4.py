@@ -11,8 +11,8 @@ from tqdm import tqdm
 # ⚙️ 1. 경로 및 설정
 # ==============================================================================
 FRAME_DIR = Path("/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/data/1_FRAME/AI_dataset/N01/N01_Treatment/diagonal__biceps_curl")
-JSON_DIR = Path("/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/data/test/sam3/AI_dataset/N01/N01_Treatment/diagonal__biceps_curl_v4.0")
-VIDEO_OUTPUT_PATH = Path("/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/data/test/sam3/sam3_Won2_v4.0.mp4")
+JSON_DIR = Path("/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/data/8_SAM/AI_dataset/N01/N01_Treatment/diagonal__biceps_curl")
+VIDEO_OUTPUT_PATH = Path("/workspace/nas203/ds_RehabilitationMedicineData/IDs/tojihoo/data/test/sam3/sam3_Won2_v4.1.mp4")
 
 FPS = 30.0
 ALPHA = 0.5 
