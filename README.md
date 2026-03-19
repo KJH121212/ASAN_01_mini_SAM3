@@ -1,18 +1,18 @@
 # 🎥 Video Object Segmentation & Tracking with SAM3
 
-[cite_start]이 프로젝트는 **SAM3(Segment Anything Model 3)** 및 **Sapiens**를 활용하여 비디오 내 객체를 정밀하게 세그멘테이션하고, Bounding Box(BBox), 포인트, 또는 텍스트 프롬프트를 기반으로 객체를 추적(Tracking)하는 도구 모음입니다[cite: 1].
+이 프로젝트는 **SAM3(Segment Anything Model 3)** 및 **Sapiens**를 활용하여 비디오 내 객체를 정밀하게 세그멘테이션하고, Bounding Box(BBox), 포인트, 또는 텍스트 프롬프트를 기반으로 객체를 추적(Tracking)하는 도구 모음입니다[cite: 1].
 
 ## 📂 Project Structure
 
 제공된 파일들을 기반으로 한 주요 구조는 다음과 같습니다.
 
-* [cite_start]**`runner/`**: 실제 대규모 처리를 위한 실행 스크립트가 포함되어 있습니다[cite: 1].
-    * [cite_start]`seg_by_samv3.py`: SAM3 모델을 사용하여 비디오 세그멘테이션을 수행하는 메인 로직입니다[cite: 1].
-* [cite_start]**`func/`**: 마스크 변환, 데이터 로드, 텍스트 트래킹 등 핵심 기능을 담은 모듈입니다[cite: 1].
+* **`runner/`**: 실제 대규모 처리를 위한 실행 스크립트가 포함되어 있습니다[cite: 1].
+    * `seg_by_samv3.py`: SAM3 모델을 사용하여 비디오 세그멘테이션을 수행하는 메인 로직입니다[cite: 1].
+* **`func/`**: 마스크 변환, 데이터 로드, 텍스트 트래킹 등 핵심 기능을 담은 모듈입니다[cite: 1].
     * `text_tracking_v2.py`: 텍스트 프롬프트를 이용한 객체 검출 및 양방향 트래킹 기능을 제공합니다.
     * `mask_to_bbox.py`: 생성된 마스크에서 BBox를 추출하는 유틸리티입니다.
-* [cite_start]**`test_code/`**: 다양한 시나리오(BBox 기반, 포인트 기반, 속도 측정 등)를 테스트하기 위한 Jupyter Notebook 및 스크립트들입니다[cite: 1].
-* [cite_start]**`docker/`**: 일관된 실행 환경을 위한 Dockerfile 및 요구사항 정의서입니다[cite: 1].
+* **`test_code/`**: 다양한 시나리오(BBox 기반, 포인트 기반, 속도 측정 등)를 테스트하기 위한 Jupyter Notebook 및 스크립트들입니다[cite: 1].
+* **`docker/`**: 일관된 실행 환경을 위한 Dockerfile 및 요구사항 정의서입니다[cite: 1].
 
 ---
 
