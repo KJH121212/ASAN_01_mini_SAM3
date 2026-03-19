@@ -1,0 +1,41 @@
+.
+├── ./0_bbox_by_sam3.sh
+├── ./docker
+│   ├── ./docker/Dockerfile
+│   └── ./docker/requirements.txt
+├── ./func
+│   ├── ./func/data.py
+│   ├── ./func/huggingface_login.py
+│   ├── ./func/__init__.py
+│   ├── ./func/mask_to_bbox.py
+│   ├── ./func/text_tracking.py
+│   └── ./func/text_tracking_v2.py
+├── ./README.md
+├── ./runner
+│   ├── ./runner/bbox_by_sam3.py
+│   ├── ./runner/seg_by_sam.py
+│   └── ./runner/seg_by_samv3.py
+├── ./test_code
+│   ├── ./test_code/a.ipynb
+│   ├── ./test_code/BBOX2SAM.ipynb
+│   ├── ./test_code/json2mp4.py
+│   ├── ./test_code/origin_sam2_v1.py
+│   ├── ./test_code/origin_sam2_v2.py
+│   ├── ./test_code/origin_sam2_v3.py
+│   ├── ./test_code/origin_sam2_v4.py
+│   ├── ./test_code/point2sam.ipynb
+│   ├── ./test_code/sam3_chunk_tracker_v3.0.py
+│   ├── ./test_code/sam_plus_sapiens.ipynb
+│   ├── ./test_code/sam_speed.ipynb
+│   ├── ./test_code/seg_by_samv1.py
+│   ├── ./test_code/seg_by_samv2.py
+│   ├── ./test_code/text_tracking_v1.py
+│   ├── ./test_code/text_tracking_v2.py
+│   ├── ./test_code/text_tracking_v3.0.py
+│   ├── ./test_code/text_tracking_v3.2.py
+│   ├── ./test_code/text_tracking_v3.3.py
+│   ├── ./test_code/text_tracking_v4.0.py
+│   └── ./test_code/text_tracking_v4.1.py
+└── ./tree.txt
+
+4 directories, 34 files
